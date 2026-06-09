@@ -1,21 +1,23 @@
 import './styles/main.css';
 
-import logoSvg        from './assets/gameland-logo.svg';
-import gameTextSvg    from './assets/game-text.svg';
-import characterPng   from './assets/main-character.png';
-import bubblePng      from './assets/boost-bubble.png';
-import communityPng   from './assets/bg-community.png';
-import appleSvg       from './assets/apple.svg';
-import androidSvg     from './assets/android.svg';
-import arrowSvg       from './assets/arrow.svg';
-import decoLineSvg    from './assets/deco-line.svg';
-import bottomShapeSvg from './assets/bottom-shape.svg';
+import logoSvg           from './assets/gameland-logo.svg';
+import gameTextSvg       from './assets/game-text.svg';
+import characterPng      from './assets/main-character.png';
+import bubblePng         from './assets/boost-bubble.png';
+import communityFullPng  from './assets/community-full.png';
+import communityOvflPng  from './assets/community-overflow.png';
+import communityHand2Png from './assets/community-hand2.png';
+import appleSvg          from './assets/apple.svg';
+import androidSvg        from './assets/android.svg';
+import arrowSvg          from './assets/arrow.svg';
+import decoLineSvg       from './assets/deco-line.svg';
+import bottomShapeSvg    from './assets/bottom-shape.svg';
 
 document.querySelector('#app').innerHTML = `
 <div class="page">
 <div class="page-stage">
 
-  <!-- ── DECORATIVE LINE (behind character, above bg) ── -->
+  <!-- ── DECORATIVE LINE ─────────────────────────────── -->
   <img class="deco-line" src="${decoLineSvg}" alt="" aria-hidden="true" />
 
   <!-- ── NAVBAR ─────────────────────────────────────── -->
@@ -50,11 +52,13 @@ document.querySelector('#app').innerHTML = `
   </a>
 
   <!-- ── APPS BADGE ─────────────────────────────────── -->
-  <div class="apps-wrap" aria-label="Apps available on App Store and Google Play">
+  <div class="apps-wrap" aria-label="Apps available">
     <div class="apps-circles">
+      <!-- Android: white bg, purple icon -->
       <div class="app-circle app-android">
         <img src="${androidSvg}" alt="Google Play" />
       </div>
+      <!-- Apple: purple bg, white icon -->
       <div class="app-circle app-apple">
         <img src="${appleSvg}" alt="App Store" />
       </div>
@@ -76,12 +80,21 @@ document.querySelector('#app').innerHTML = `
 
   <!-- ── BOTTOM SECTION ─────────────────────────────── -->
   <div class="bottom-section">
-    <!-- Organic card shape background -->
+
+    <!-- Organic card shape -->
     <img class="bottom-bg" src="${bottomShapeSvg}" alt="" aria-hidden="true" />
 
-    <!-- Community card -->
+    <!-- Community character — 3 layers -->
+    <!-- Layer 1: purple oval background -->
     <div class="community-oval"></div>
-    <img class="community-char" src="${communityPng}" alt="Online gaming community" />
+    <!-- Layer 2: full body (appears "inside" card on white area) -->
+    <img class="community-char community-char--base"  src="${communityFullPng}"  alt="Online gaming community" />
+    <!-- Layer 3: overflow parts — head/ears/arms above card edge -->
+    <img class="community-char community-char--ovfl"  src="${communityOvflPng}"  alt="" aria-hidden="true" />
+    <!-- Layer 4: second hand -->
+    <img class="community-char community-char--hand2" src="${communityHand2Png}" alt="" aria-hidden="true" />
+
+    <!-- Community info -->
     <div class="community-text">
       Online<br>gameland<br>community
     </div>
@@ -89,6 +102,7 @@ document.querySelector('#app').innerHTML = `
 
     <!-- Vertical gameland logo -->
     <img class="logo-vert" src="${logoSvg}" alt="Gameland" aria-hidden="true" />
+
   </div>
 
 </div>
