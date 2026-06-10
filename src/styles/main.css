@@ -41,6 +41,7 @@ html, body {
 /* ── DESKTOP: wrappers transparent ──────────────────── */
 .hero, .hero-cols, .hero-left, .hero-right { display: contents; }
 .btn-hamburger { display: none; }
+.mobile-nav { display: none; }
 
 /* ── DECO LINE ───────────────────────────────────────── */
 .deco-line {
@@ -277,15 +278,16 @@ html, body {
     display: flex; flex-direction: column; align-items: center; gap: 10px;
     overflow: visible;
   }
-  .hero-right { flex: 1; min-width: 0; overflow: hidden; }
+  .hero-right { flex: 1; min-width: 0; overflow: visible; }
 
   /* ── HEADLINE ───────────────────────────────────────── */
   .headline,
   .headline-end {
     position: relative; top: auto; left: auto; width: auto;
-    font-size: 28px; line-height: 34px; letter-spacing: 1px;
+    font-size: 36px; line-height: 40px; letter-spacing: 1px;
     text-align: center;
   }
+  .headline-end { margin-top: -4px; }
 
   /* ── GAME BADGE — centred within left column ── */
   .game-badge {
@@ -367,9 +369,9 @@ html, body {
   /* ── CHARACTER ──────────────────────────────────────── */
   .character {
     position: relative; top: auto; left: auto;
-    width: 88%; max-width: 100%; height: auto; display: block;
-    object-fit: contain; object-position: top center;
-    margin: 0 auto;
+    width: 100%; max-width: 100%; height: auto; display: block;
+    object-fit: contain; object-position: top left;
+    margin-left: -16px;
   }
 
   /* ── BOTTOM SECTION ─────────────────────────────────── */
@@ -388,14 +390,15 @@ html, body {
   .community-char--hand2 { left: 85px; top: 151px; width: 17px; height: 28px; }
 
   .community-text {
-    top: 20px; left: 122px;
-    font-size: 24px; line-height: 32px; letter-spacing: 0.5px;
-    color: #888;
+    top: 24px; left: 120px; right: 12px;
+    font-size: 26px; line-height: 32px; letter-spacing: 0.5px;
+    color: var(--purple-deep); text-align: center;
   }
   .btn-connect {
-    top: 132px; left: 122px;
-    width: 150px; height: 38px;
-    font-size: 13px; letter-spacing: 0.4px;
+    top: 142px; left: 120px; right: 12px;
+    width: auto; height: 44px;
+    font-size: 15px; letter-spacing: 0.4px;
+    text-align: center;
   }
   .logo-vert { display: none; }
 
