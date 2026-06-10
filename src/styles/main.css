@@ -135,7 +135,7 @@ html, body {
 /* Visible Anton text — rotated to match skewed badge polygon (~6.5°) */
 .game-badge-text {
   position: absolute;
-  left: 18px; top: 14px;
+  top: 50%; left: 50%;
   font-family: 'Anton', sans-serif;
   font-size: 64px;
   line-height: 1;
@@ -144,8 +144,7 @@ html, body {
   user-select: text;
   cursor: text;
   white-space: nowrap;
-  transform: rotate(6.5deg);
-  transform-origin: left top;
+  transform: translate(-50%, -50%) rotate(6.5deg);
 }
 
 /* ── GET STARTED CTA ─────────────────────────────────── */
