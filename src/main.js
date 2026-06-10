@@ -38,6 +38,19 @@ document.querySelector('#app').innerHTML = `
     </button>
   </nav>
 
+  <div class="mobile-nav" aria-hidden="true">
+    <ul class="mobile-nav-links">
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contacts</a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Our Jobs</a></li>
+    </ul>
+    <a class="btn-login mobile-nav-login" href="#" role="button">
+      Login
+      <img src="${arrowSvg}" alt="" aria-hidden="true" />
+    </a>
+  </div>
+
   <div class="hero">
     <div class="hero-cols">
 
@@ -98,6 +111,14 @@ document.querySelector('#app').innerHTML = `
 </div>
 </div>
 `;
+
+const hamburger = document.querySelector('.btn-hamburger');
+const mobileNav = document.querySelector('.mobile-nav');
+hamburger.addEventListener('click', () => {
+  const open = hamburger.getAttribute('aria-expanded') === 'true';
+  hamburger.setAttribute('aria-expanded', String(!open));
+  mobileNav.classList.toggle('mobile-nav--open', !open);
+});
 
 function scalePage() {
   const stage = document.querySelector('.page-stage');
