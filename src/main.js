@@ -17,10 +17,8 @@ document.querySelector('#app').innerHTML = `
 <div class="page">
 <div class="page-stage">
 
-  <!-- ── DECORATIVE LINE ─────────────────────────────── -->
   <img class="deco-line" src="${decoLineSvg}" alt="" aria-hidden="true" />
 
-  <!-- ── NAVBAR ─────────────────────────────────────── -->
   <nav class="navbar">
     <a class="nav-logo" href="#" aria-label="Gameland">
       <img src="${logoSvg}" alt="Gameland" />
@@ -40,11 +38,6 @@ document.querySelector('#app').innerHTML = `
     </button>
   </nav>
 
-  <!-- ── HERO ───────────────────────────────────────── -->
-  <!--
-    On desktop: hero, hero-cols, hero-left, hero-right all have display:contents
-    On mobile:  hero = flex column; hero-cols = flex row; speech-bubble spans full width
-  -->
   <div class="hero">
     <div class="hero-cols">
 
@@ -72,40 +65,33 @@ document.querySelector('#app').innerHTML = `
           </div>
           <span class="apps-label">Apps available</span>
         </div>
-      </div><!-- /.hero-left -->
+
+        <!-- Speech bubble inside hero-left; wider than column on mobile (overflows onto character) -->
+        <div class="speech-bubble" role="region" aria-label="Boost introduction">
+          <div class="bubble-avatar">
+            <img src="${bubblePng}" alt="Boost" />
+          </div>
+          <p class="bubble-main">I am Boost, nice to meet you!</p>
+          <p class="bubble-sub">Created by Daniel Alves</p>
+        </div>
+      </div>
 
       <div class="hero-right">
         <img class="character" src="${characterPng}" alt="Boost — Gameland mascot" />
-      </div><!-- /.hero-right -->
-
-    </div><!-- /.hero-cols -->
-
-    <!-- Speech bubble: absolute on desktop, full-width row on mobile -->
-    <div class="speech-bubble" role="region" aria-label="Boost introduction">
-      <div class="bubble-avatar">
-        <img src="${bubblePng}" alt="Boost" />
       </div>
-      <p class="bubble-main">I am Boost, nice to meet you!</p>
-      <p class="bubble-sub">Created by Daniel Alves</p>
+
     </div>
+  </div>
 
-  </div><!-- /.hero -->
-
-  <!-- ── BOTTOM SECTION ─────────────────────────────── -->
   <div class="bottom-section">
     <img class="bottom-bg" src="${bottomShapeSvg}" alt="" aria-hidden="true" />
-
     <div class="community-oval-clip">
       <img class="community-char--base" src="${community01Png}" alt="Online gaming community" />
     </div>
     <img class="community-char--ovfl"  src="${community02Png}" alt="" aria-hidden="true" />
     <img class="community-char--hand2" src="${community03Png}" alt="" aria-hidden="true" />
-
-    <div class="community-text">
-      Online<br>gameland<br>community
-    </div>
+    <div class="community-text">Online<br>gameland<br>community</div>
     <a class="btn-connect" href="#" role="button">Connect now</a>
-
     <img class="logo-vert" src="${logoSvg}" alt="Gameland" aria-hidden="true" />
   </div>
 
@@ -113,12 +99,10 @@ document.querySelector('#app').innerHTML = `
 </div>
 `;
 
-/* ── SCALE ENGINE ──────────────────────────────────── */
 function scalePage() {
   const stage = document.querySelector('.page-stage');
   const page  = document.querySelector('.page');
   if (!stage || !page) return;
-
   if (window.innerWidth <= 767) {
     stage.style.transform = 'none';
     stage.style.width     = '100%';
@@ -130,6 +114,5 @@ function scalePage() {
     page.style.height           = `${1193 * scale}px`;
   }
 }
-
 scalePage();
 window.addEventListener('resize', scalePage);
