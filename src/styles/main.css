@@ -113,6 +113,17 @@ html, body {
   z-index: 5; width: 380px;
 }
 
+/* "TO PLAY." — third line of the original headline */
+.headline-end {
+  position: absolute;
+  top: 375px; left: 112px;
+  font-family: 'Anton', sans-serif;
+  font-size: 67.974px; line-height: 88.573px;
+  letter-spacing: 2.719px;
+  color: var(--text); text-transform: uppercase;
+  z-index: 5; width: 380px;
+}
+
 /* ── GAME badge (animated, text selectable) ─────────── */
 .game-badge {
   position: absolute;
@@ -367,11 +378,10 @@ html, body {
 
 /* ═══════════════════════════════════════════════════════
    MOBILE  (≤ 767px)
-   Fixed 1440-canvas is disabled; pure flow layout.
    ═══════════════════════════════════════════════════════ */
 @media (max-width: 767px) {
 
-  /* ── PAGE / STAGE reset ─────────────────────────────── */
+  /* ── PAGE / STAGE ───────────────────────────────────── */
   .page { overflow: visible; }
 
   .page-stage {
@@ -383,7 +393,6 @@ html, body {
     flex-direction: column;
   }
 
-  /* ── DECORATIVE LINE — hide ─────────────────────────── */
   .deco-line { display: none; }
 
   /* ── NAVBAR ─────────────────────────────────────────── */
@@ -394,11 +403,9 @@ html, body {
     padding: 16px 20px;
     flex-shrink: 0;
   }
-
   .nav-links { display: none; }
   .btn-login  { display: none; }
 
-  /* Hamburger button */
   .btn-hamburger {
     display: flex;
     align-items: center; justify-content: center;
@@ -418,7 +425,7 @@ html, body {
     box-shadow: 0 -6px 0 var(--purple-dk), 0 6px 0 var(--purple-dk);
   }
 
-  /* ── HERO — 2-column flex ───────────────────────────── */
+  /* ── HERO ───────────────────────────────────────────── */
   .hero {
     display: flex;
     gap: 8px;
@@ -427,7 +434,7 @@ html, body {
   }
 
   .hero-left {
-    width: 116px;
+    width: 128px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -440,50 +447,54 @@ html, body {
   }
 
   /* ── HEADLINE ───────────────────────────────────────── */
-  .headline {
+  .headline,
+  .headline-end {
     position: relative;
     top: auto; left: auto; width: auto;
-    font-size: 21px;
-    line-height: 27px;
+    font-family: 'Anton', sans-serif;
+    font-size: 26px;
+    line-height: 32px;
     letter-spacing: 1px;
+    color: var(--text);
+    text-transform: uppercase;
   }
 
   /* ── GAME BADGE ─────────────────────────────────────── */
   .game-badge {
     position: relative;
     top: auto; left: auto;
-    width: 88px; height: 51px;
-    margin-top: -2px;
+    width: 100%; height: 58px;
+    margin-top: -4px;
     transform-origin: left center;
   }
-  .game-badge-text { font-size: 27px; }
+  .game-badge-text { font-size: 30px; }
 
   /* ── GET STARTED ────────────────────────────────────── */
   .btn-cta {
     position: relative;
     top: auto; left: auto;
-    width: 100%; height: 36px;
-    font-size: 12px;
+    width: 100%; height: 38px;
+    font-size: 12.5px;
     letter-spacing: 0.4px;
     gap: 6px;
     box-shadow: 0 4px 16px rgba(159,119,214,.35);
   }
   .btn-cta img { width: 13px; height: 13px; }
 
-  /* ── APPS ───────────────────────────────────────────── */
+  /* ── APPS — label below circles ─────────────────────── */
   .apps-wrap {
     position: relative;
     top: auto; left: auto;
     display: flex;
-    align-items: center;
-    gap: 6px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
   .apps-circles {
-    width: 46px; height: 26px;
-    flex-shrink: 0;
+    width: 48px; height: 28px;
   }
   .app-circle {
-    width: 26px; height: 26px;
+    width: 28px; height: 28px;
   }
   .app-android { left: 18px; top: 0; }
   .app-apple   { left: 0;   top: 0; }
@@ -495,29 +506,38 @@ html, body {
     white-space: nowrap;
   }
 
-  /* ── SPEECH BUBBLE ──────────────────────────────────── */
+  /* ── SPEECH BUBBLE — auto-height, text inside ───────── */
   .speech-bubble {
     position: relative;
     top: auto; left: auto;
-    width: 100%; height: 46px;
+    width: 100%;
+    height: auto;
+    min-height: 48px;
+    padding: 8px 10px 8px 48px;
     border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     transform-origin: center;
   }
   .bubble-avatar {
+    position: absolute;
     top: 8px; left: 8px;
-    width: 30px; height: 30px;
+    width: 32px; height: 32px;
   }
   .bubble-main {
-    top: 9px; left: 44px; right: 6px;
-    font-size: 8.5px;
-    letter-spacing: 0.2px;
+    position: static;
+    font-size: 10.5px;
+    letter-spacing: 0.3px;
     white-space: normal;
-    line-height: 1.1;
+    line-height: 1.3;
+    color: var(--text);
   }
   .bubble-sub {
-    top: 28px; left: 44px;
-    font-size: 8px;
+    position: static;
+    font-size: 9.5px;
     letter-spacing: 0;
+    margin-top: 2px;
   }
 
   /* ── CHARACTER ──────────────────────────────────────── */
@@ -535,42 +555,42 @@ html, body {
     position: relative;
     top: auto; left: auto;
     width: calc(100% - 32px);
-    margin: 12px 16px 24px;
-    height: 185px;
+    margin: 12px 16px 28px;
+    height: 205px;
     background: var(--white);
-    border-radius: 20px;
+    border-radius: 22px;
     flex-shrink: 0;
-    overflow: visible; /* allow character head to peek above */
+    overflow: visible;
   }
   .bottom-bg { display: none; }
 
-  /* Community character — scaled ~0.5× from desktop */
+  /* Community character — designed for ~100px left column */
   .community-oval-clip {
-    left: 16px; top: 35px;
-    width: 88px; height: 143px;
-    border-radius: 44px;
+    left: 10px; top: 22px;
+    width: 84px; height: 158px;
+    border-radius: 42px;
   }
   .community-char--base {
-    width: 88px; height: 143px;
+    width: 84px; height: 158px;
   }
   .community-char--ovfl {
-    left: 4px; top: -5px;
-    width: 102px; height: 111px;
+    left: 0px; top: -12px;
+    width: 105px; height: 114px;
   }
   .community-char--hand2 {
-    left: 82px; top: 151px;
-    width: 17px; height: 28px;
+    left: 78px; top: 160px;
+    width: 18px; height: 30px;
   }
   .community-text {
-    top: 18px; left: 118px;
-    font-size: 15px;
-    line-height: 21px;
-    letter-spacing: 0.4px;
+    top: 22px; left: 110px;
+    font-size: 20px;
+    line-height: 27px;
+    letter-spacing: 0.6px;
   }
   .btn-connect {
-    top: 96px; left: 118px;
-    width: 118px; height: 36px;
-    font-size: 12px;
+    top: 114px; left: 110px;
+    width: 150px; height: 40px;
+    font-size: 13px;
     letter-spacing: 0.4px;
   }
   .logo-vert { display: none; }

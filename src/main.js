@@ -3,7 +3,7 @@ import './styles/main.css';
 import logoSvg        from './assets/gameland-logo.svg';
 import gameBgSvg      from './assets/game-bg.svg';
 import characterPng   from './assets/main-character.png';
-import bubblePng      from './assets/boost-bubble.png';
+import bubblePng      from './assets/boost-bubble-hd.png';
 import community01Png from './assets/community-01.png';
 import community02Png from './assets/community-02.png';
 import community03Png from './assets/community-03.png';
@@ -40,20 +40,17 @@ document.querySelector('#app').innerHTML = `
     </button>
   </nav>
 
-  <!-- ── HERO (display:contents on desktop → flex-row on mobile) ── -->
+  <!-- ── HERO ───────────────────────────────────────── -->
   <div class="hero">
     <div class="hero-left">
 
-      <!-- ── HEADLINE ─────────────────────────────── -->
-      <div class="headline" aria-label="Choose your awesome game to play.">
-        CHOOSE YOUR<br>AWESOME<br>TO PLAY.
-      </div>
-
-      <!-- ── GAME badge ────────────────────────────── -->
+      <!-- Headline split so GAME badge sits between AWESOME and TO PLAY on mobile -->
+      <div class="headline">CHOOSE YOUR<br>AWESOME</div>
       <div class="game-badge">
         <img class="game-badge-bg" src="${gameBgSvg}" alt="" aria-hidden="true" />
         <span class="game-badge-text">GAME</span>
       </div>
+      <div class="headline-end">TO PLAY.</div>
 
       <!-- ── GET STARTED ───────────────────────────── -->
       <a class="btn-cta" href="#" role="button">
@@ -85,35 +82,26 @@ document.querySelector('#app').innerHTML = `
 
     </div><!-- /.hero-left -->
     <div class="hero-right">
-
-      <!-- ── MAIN CHARACTER ────────────────────────── -->
       <img class="character" src="${characterPng}" alt="Boost — Gameland mascot" />
-
-    </div><!-- /.hero-right -->
+    </div>
   </div><!-- /.hero -->
 
   <!-- ── BOTTOM SECTION ─────────────────────────────── -->
   <div class="bottom-section">
-
-    <!-- Organic card shape -->
     <img class="bottom-bg" src="${bottomShapeSvg}" alt="" aria-hidden="true" />
 
-    <!-- Community character — layered system -->
     <div class="community-oval-clip">
       <img class="community-char--base" src="${community01Png}" alt="Online gaming community" />
     </div>
     <img class="community-char--ovfl"  src="${community02Png}" alt="" aria-hidden="true" />
     <img class="community-char--hand2" src="${community03Png}" alt="" aria-hidden="true" />
 
-    <!-- Community info -->
     <div class="community-text">
       Online<br>gameland<br>community
     </div>
     <a class="btn-connect" href="#" role="button">Connect now</a>
 
-    <!-- Vertical gameland logo -->
     <img class="logo-vert" src="${logoSvg}" alt="Gameland" aria-hidden="true" />
-
   </div>
 
 </div>
@@ -127,7 +115,6 @@ function scalePage() {
   if (!stage || !page) return;
 
   if (window.innerWidth <= 767) {
-    /* Mobile — disable fixed-canvas scaling */
     stage.style.transform = 'none';
     stage.style.width     = '100%';
     page.style.height     = 'auto';
