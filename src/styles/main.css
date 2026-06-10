@@ -111,13 +111,34 @@ html, body {
   z-index: 5; width: 380px;
 }
 
-/* ── GAME badge ──────────────────────────────────────── */
+/* ── GAME badge (animated, text selectable) ─────────── */
 .game-badge {
   position: absolute;
   top: 281px; left: 392px;
-  width: 201.135px; height: 117px;
+  width: 201px; height: 117px;
   z-index: 6;
-  pointer-events: none; user-select: none;
+  animation: bubbleBreath 3.2s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+.game-badge-bg {
+  position: absolute;
+  inset: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+/* Visible Anton text — selectable & copyable */
+.game-badge-text {
+  position: absolute;
+  left: 18px; top: 14px;
+  font-family: 'Anton', sans-serif;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: 2px;
+  color: var(--login-bg);
+  user-select: text;
+  cursor: text;
+  white-space: nowrap;
 }
 
 /* ── GET STARTED CTA ─────────────────────────────────── */
@@ -279,60 +300,49 @@ html, body {
   community-hand2.png ( 282× 264) → NOT clipped, lower-right area
 */
 
-/* Purple oval visual background */
-.community-oval {
-  position: absolute;
-  left: 33px; top: 70px;
-  width: 176px; height: 286px;
-  background: var(--purple);
-  border-radius: 88px;
-  opacity: 0.30;
-  z-index: 2;
-}
-
-/* Clip container — same shape as oval, clips base character */
+/* Clip container — oval shape, purple bg always visible behind character */
 .community-oval-clip {
   position: absolute;
   left: 33px; top: 70px;
   width: 176px; height: 286px;
   border-radius: 88px;
   overflow: hidden;
+  background: var(--purple);
   z-index: 3;
 }
 
-/* Base character inside clip container (clipped to oval) */
-/* Image anchor in bottom-section: left=-27, top=69           */
-/* Relative to container (left=33, top=70): left=-60, top=-1  */
+/* Base character inside clip container — 2x export, display at half */
+/* 01.png: 352×572 → display 176×286 (exactly oval size, no offset)  */
 .community-char--base {
   position: absolute;
-  left: -60px; top: -1px;
-  width: 287px;
-  height: auto;
+  left: 0; top: 0;
+  width: 176px; height: 286px;
   pointer-events: none; user-select: none;
 }
 
-/* Overflow: head/arm above oval — NOT clipped */
+/* Overflow: head/arm above oval — 2x export, display at half */
+/* 02.png: 408×444 → display 204×222                          */
+/* Figma position: left=12, top=80 in bottom-section          */
 .community-char--ovfl {
   position: absolute;
-  left: -27px; top: 69px;
-  width: 287px;
-  height: auto;
+  left: 12px; top: 80px;
+  width: 204px; height: 222px;
   z-index: 6;
   pointer-events: none; user-select: none;
 }
 
-/* Right hand — NOT clipped */
-/* Figma window center in bottom-section: (186, 329)          */
+/* Right hand — 2x export, display at half */
+/* 03.png: 65×109 → display 33×55          */
+/* Figma position: left=170, top=302        */
 .community-char--hand2 {
   position: absolute;
-  left: 148px; top: 293px;
-  width: 77px;
-  height: auto;
+  left: 170px; top: 302px;
+  width: 33px; height: 55px;
   z-index: 6;
   pointer-events: none; user-select: none;
 }
 
-/* Community text — subtle breathing animation */
+/* Community text — static */
 .community-text {
   position: absolute;
   top: 101px; left: 240px;
@@ -341,13 +351,6 @@ html, body {
   letter-spacing: 1.4519px;
   color: var(--text); text-transform: uppercase;
   z-index: 5;
-  transform-origin: left top;
-  animation: textBreath 3.6s ease-in-out infinite;
-}
-
-@keyframes textBreath {
-  0%,  100% { transform: scale(1); }
-  50%        { transform: scale(1.03); }
 }
 
 /* Connect now button */

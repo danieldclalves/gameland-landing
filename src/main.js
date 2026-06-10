@@ -1,17 +1,17 @@
 import './styles/main.css';
 
-import logoSvg           from './assets/gameland-logo.svg';
-import gameTextSvg       from './assets/game-text.svg';
-import characterPng      from './assets/main-character.png';
-import bubblePng         from './assets/boost-bubble.png';
-import communityFullPng  from './assets/community-full.png';
-import communityOvflPng  from './assets/community-overflow.png';
-import communityHand2Png from './assets/community-hand2.png';
-import appleSvg          from './assets/apple.svg';
-import androidSvg        from './assets/android.svg';
-import arrowSvg          from './assets/arrow.svg';
-import decoLineSvg       from './assets/deco-line.svg';
-import bottomShapeSvg    from './assets/bottom-shape.svg';
+import logoSvg        from './assets/gameland-logo.svg';
+import gameBgSvg      from './assets/game-bg.svg';
+import characterPng   from './assets/main-character.png';
+import bubblePng      from './assets/boost-bubble.png';
+import community01Png from './assets/community-01.png';
+import community02Png from './assets/community-02.png';
+import community03Png from './assets/community-03.png';
+import appleSvg       from './assets/apple.svg';
+import androidSvg     from './assets/android.svg';
+import arrowSvg       from './assets/arrow.svg';
+import decoLineSvg    from './assets/deco-line.svg';
+import bottomShapeSvg from './assets/bottom-shape.svg';
 
 document.querySelector('#app').innerHTML = `
 <div class="page">
@@ -42,8 +42,11 @@ document.querySelector('#app').innerHTML = `
     CHOOSE YOUR<br>AWESOME<br>TO PLAY.
   </div>
 
-  <!-- ── GAME badge ─────────────────────────────────── -->
-  <img class="game-badge" src="${gameTextSvg}" alt="GAME" aria-hidden="true" />
+  <!-- ── GAME badge (animated, text selectable) ──────── -->
+  <div class="game-badge">
+    <img class="game-badge-bg" src="${gameBgSvg}" alt="" aria-hidden="true" />
+    <span class="game-badge-text">GAME</span>
+  </div>
 
   <!-- ── GET STARTED ────────────────────────────────── -->
   <a class="btn-cta" href="#" role="button">
@@ -85,16 +88,14 @@ document.querySelector('#app').innerHTML = `
     <img class="bottom-bg" src="${bottomShapeSvg}" alt="" aria-hidden="true" />
 
     <!-- Community character — layered system -->
-    <!-- Purple oval visual background -->
-    <div class="community-oval"></div>
-    <!-- Clip container (oval shape, overflow:hidden) clips base body to oval -->
+    <!-- Clip container (oval shape + purple bg, overflow:hidden) clips base body -->
     <div class="community-oval-clip">
-      <img class="community-char--base" src="${communityFullPng}" alt="Online gaming community" />
+      <img class="community-char--base" src="${community01Png}" alt="Online gaming community" />
     </div>
     <!-- Overflow layer: head/arm above oval, NOT clipped -->
-    <img class="community-char--ovfl"  src="${communityOvflPng}"  alt="" aria-hidden="true" />
+    <img class="community-char--ovfl"  src="${community02Png}" alt="" aria-hidden="true" />
     <!-- Right hand, NOT clipped -->
-    <img class="community-char--hand2" src="${communityHand2Png}" alt="" aria-hidden="true" />
+    <img class="community-char--hand2" src="${community03Png}" alt="" aria-hidden="true" />
 
     <!-- Community info -->
     <div class="community-text">
