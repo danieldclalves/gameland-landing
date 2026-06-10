@@ -269,24 +269,20 @@ html, body {
 
 /* ── COMMUNITY CHARACTER ─────────────────────────────── */
 /*
-  community-full.png:  1048×1360 (complete character, all parts)
-  community-overflow:  1048×1071 (head/arm/torso overflow layer)
-  community-hand2.png:  282×264  (the other hand)
+  Figma reference (bottom-section coords):
+    Oval:           left=33,  top=70,  w=176, h=286
+    Image anchor:   left=-27, top=69   (all layers share this ref point)
+    Display width:  287px (scale = 287/1048 = 0.274)
 
-  Scale factor: 420 display-height / 1360 image-height = 0.309
-  Display width:  1048 × 0.309 = 324px
-  Display height: 1360 × 0.309 = 420px
-
-  Oval center-x relative to bottom-section: 20 + 88 = 108px
-  char left = 108 - 324/2 = -54px  (arms stick out left)
-  char bottom = oval bottom = 70+286 = 356px
-  char top  = 356 - 420 = -64px    (64px of head/ears above card top)
+  community-full.png  (1048×1360) → clipped inside oval via overflow:hidden
+  community-overflow  (1048×1071) → NOT clipped, shows head/arm above oval
+  community-hand2.png ( 282× 264) → NOT clipped, lower-right area
 */
 
-/* Purple oval background behind character */
+/* Purple oval visual background */
 .community-oval {
   position: absolute;
-  top: 70px; left: 20px;
+  left: 33px; top: 70px;
   width: 176px; height: 286px;
   background: var(--purple);
   border-radius: 88px;
@@ -294,41 +290,49 @@ html, body {
   z-index: 2;
 }
 
-/* Shared base position for all character image layers */
-.community-char {
+/* Clip container — same shape as oval, clips base character */
+.community-oval-clip {
   position: absolute;
-  top: -64px; left: -54px;
-  width: 324px;
-  pointer-events: none; user-select: none;
-}
-
-/* Layer 1: full character body */
-.community-char--base {
-  height: 420px;
-  object-fit: contain; object-position: top left;
+  left: 33px; top: 70px;
+  width: 176px; height: 286px;
+  border-radius: 88px;
+  overflow: hidden;
   z-index: 3;
 }
 
-/* Layer 2: head/arm/torso overflow (above card edge) — 1048×1071 */
+/* Base character inside clip container (clipped to oval) */
+/* Image anchor in bottom-section: left=-27, top=69           */
+/* Relative to container (left=33, top=70): left=-60, top=-1  */
+.community-char--base {
+  position: absolute;
+  left: -60px; top: -1px;
+  width: 287px;
+  height: auto;
+  pointer-events: none; user-select: none;
+}
+
+/* Overflow: head/arm above oval — NOT clipped */
 .community-char--ovfl {
-  /* height proportional: 420 × (1071/1360) = 330px */
-  height: 330px;
-  object-fit: contain; object-position: top left;
-  z-index: 6; /* above bottom-bg (z=1), text (z=5) */
-}
-
-/* Layer 3: second hand — 282×264 */
-/* Image canvas coords in full char: approx x=710,y=1100 → scaled: x=220,y=340 */
-/* Relative to bottom-section: x=-54+220=166, y=-64+340=276 */
-.community-char--hand2 {
-  /* display: 282×0.309=87px × 264×0.309=82px */
-  top: 276px; left: 166px;
-  width: 87px; height: 82px;
-  object-fit: contain;
+  position: absolute;
+  left: -27px; top: 69px;
+  width: 287px;
+  height: auto;
   z-index: 6;
+  pointer-events: none; user-select: none;
 }
 
-/* Community text */
+/* Right hand — NOT clipped */
+/* Figma window center in bottom-section: (186, 329)          */
+.community-char--hand2 {
+  position: absolute;
+  left: 148px; top: 293px;
+  width: 77px;
+  height: auto;
+  z-index: 6;
+  pointer-events: none; user-select: none;
+}
+
+/* Community text — subtle breathing animation */
 .community-text {
   position: absolute;
   top: 101px; left: 240px;
@@ -337,6 +341,13 @@ html, body {
   letter-spacing: 1.4519px;
   color: var(--text); text-transform: uppercase;
   z-index: 5;
+  transform-origin: left top;
+  animation: textBreath 3.6s ease-in-out infinite;
+}
+
+@keyframes textBreath {
+  0%,  100% { transform: scale(1); }
+  50%        { transform: scale(1.03); }
 }
 
 /* Connect now button */
@@ -369,7 +380,7 @@ html, body {
 */
 .logo-vert {
   position: absolute;
-  left: 1092px; top: 228px;
+  left: 1077px; top: 225px;
   width: 191px; height: 45px;
   transform: rotate(90deg);
   transform-origin: center center;

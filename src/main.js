@@ -84,15 +84,17 @@ document.querySelector('#app').innerHTML = `
     <!-- Organic card shape -->
     <img class="bottom-bg" src="${bottomShapeSvg}" alt="" aria-hidden="true" />
 
-    <!-- Community character — 3 layers -->
-    <!-- Layer 1: purple oval background -->
+    <!-- Community character — layered system -->
+    <!-- Purple oval visual background -->
     <div class="community-oval"></div>
-    <!-- Layer 2: full body (appears "inside" card on white area) -->
-    <img class="community-char community-char--base"  src="${communityFullPng}"  alt="Online gaming community" />
-    <!-- Layer 3: overflow parts — head/ears/arms above card edge -->
-    <img class="community-char community-char--ovfl"  src="${communityOvflPng}"  alt="" aria-hidden="true" />
-    <!-- Layer 4: second hand -->
-    <img class="community-char community-char--hand2" src="${communityHand2Png}" alt="" aria-hidden="true" />
+    <!-- Clip container (oval shape, overflow:hidden) clips base body to oval -->
+    <div class="community-oval-clip">
+      <img class="community-char--base" src="${communityFullPng}" alt="Online gaming community" />
+    </div>
+    <!-- Overflow layer: head/arm above oval, NOT clipped -->
+    <img class="community-char--ovfl"  src="${communityOvflPng}"  alt="" aria-hidden="true" />
+    <!-- Right hand, NOT clipped -->
+    <img class="community-char--hand2" src="${communityHand2Png}" alt="" aria-hidden="true" />
 
     <!-- Community info -->
     <div class="community-text">
