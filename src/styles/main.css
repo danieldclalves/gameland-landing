@@ -47,8 +47,10 @@ html, body {
   overflow: hidden;
 }
 
+/* ── HAMBURGER — desktop hidden ──────────────────────── */
+.btn-hamburger { display: none; }
+
 /* ── DECORATIVE CURVED LINE ──────────────────────────── */
-/* Vector 1: x=2, y=340, w=1438, h=229 + slight inset overflow */
 .deco-line {
   position: absolute;
   top: 338px;
@@ -132,7 +134,6 @@ html, body {
   pointer-events: none;
 }
 
-/* Visible Anton text — rotated to match skewed badge polygon (~6.5°) */
 .game-badge-text {
   position: absolute;
   top: 50%; left: 50%;
@@ -183,7 +184,6 @@ html, body {
   width: 119px; height: 59px;
 }
 
-/* Shared circle styles */
 .app-circle {
   position: absolute;
   width: 59px; height: 59px;
@@ -198,7 +198,6 @@ html, body {
   box-shadow: 0 6px 20px rgba(129,83,193,.40);
 }
 
-/* Android — white background, purple icon */
 .app-android {
   left: 45px; top: 0;
   background: var(--white);
@@ -206,7 +205,6 @@ html, body {
   z-index: 1;
 }
 
-/* Apple — purple background, white icon */
 .app-apple {
   left: 0; top: 0;
   background: var(--purple);
@@ -286,7 +284,6 @@ html, body {
   z-index: 4;
 }
 
-/* Organic card SVG — provides the white background shape */
 .bottom-bg {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
@@ -295,18 +292,6 @@ html, body {
 }
 
 /* ── COMMUNITY CHARACTER ─────────────────────────────── */
-/*
-  Figma reference (bottom-section coords):
-    Oval:           left=33,  top=70,  w=176, h=286
-    Image anchor:   left=-27, top=69   (all layers share this ref point)
-    Display width:  287px (scale = 287/1048 = 0.274)
-
-  community-full.png  (1048×1360) → clipped inside oval via overflow:hidden
-  community-overflow  (1048×1071) → NOT clipped, shows head/arm above oval
-  community-hand2.png ( 282× 264) → NOT clipped, lower-right area
-*/
-
-/* Clip container — oval shape, purple bg always visible behind character */
 .community-oval-clip {
   position: absolute;
   left: 33px; top: 70px;
@@ -317,8 +302,6 @@ html, body {
   z-index: 3;
 }
 
-/* Base character inside clip container — 2x export, display at half */
-/* 01.png: 352×572 → display 176×286 (exactly oval size, no offset)  */
 .community-char--base {
   position: absolute;
   left: 0; top: 0;
@@ -326,9 +309,6 @@ html, body {
   pointer-events: none; user-select: none;
 }
 
-/* Overflow: head/arm above oval — 2x export, display at half */
-/* 02.png: 408×444 → display 204×222                          */
-/* Figma position: left=12, top=80 in bottom-section          */
 .community-char--ovfl {
   position: absolute;
   left: 12px; top: 80px;
@@ -337,9 +317,6 @@ html, body {
   pointer-events: none; user-select: none;
 }
 
-/* Right hand — 2x export, display at half */
-/* 03.png: 65×109 → display 33×55          */
-/* Figma position: left=170, top=302        */
 .community-char--hand2 {
   position: absolute;
   left: 170px; top: 302px;
@@ -348,7 +325,6 @@ html, body {
   pointer-events: none; user-select: none;
 }
 
-/* Community text — static */
 .community-text {
   position: absolute;
   top: 101px; left: 240px;
@@ -359,7 +335,6 @@ html, body {
   z-index: 5;
 }
 
-/* Connect now button */
 .btn-connect {
   position: absolute;
   top: 263px; left: 240px;
@@ -378,15 +353,6 @@ html, body {
 }
 
 /* ── VERTICAL LOGO ───────────────────────────────────── */
-/*
-  SVG: 191×45 px. Rotated 90° to display 45w × 191h.
-  Target visual center in bottom-section: (1188, 251)
-    → keep right edge ≤ 1210 (6px inset from card right at 1216)
-    → visual right = 1188+22.5=1210.5 ✓
-  CSS layout:
-    left = 1188 - 191/2 = 1092
-    top  =  251 -  45/2 = 228
-*/
 .logo-vert {
   position: absolute;
   left: 1077px; top: 225px;
@@ -396,4 +362,217 @@ html, body {
   opacity: 0.55;
   pointer-events: none; user-select: none;
   z-index: 5;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE  (≤ 767px)
+   Fixed 1440-canvas is disabled; pure flow layout.
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* ── PAGE / STAGE reset ─────────────────────────────── */
+  .page { overflow: visible; }
+
+  .page-stage {
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── DECORATIVE LINE — hide ─────────────────────────── */
+  .deco-line { display: none; }
+
+  /* ── NAVBAR ─────────────────────────────────────────── */
+  .navbar {
+    position: relative;
+    top: auto; left: auto; right: auto;
+    width: auto; height: auto;
+    padding: 16px 20px;
+    flex-shrink: 0;
+  }
+
+  .nav-links { display: none; }
+  .btn-login  { display: none; }
+
+  /* Hamburger button */
+  .btn-hamburger {
+    display: flex;
+    align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    background: var(--login-bg);
+    border: 1px solid var(--purple);
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+  }
+  .btn-hamburger span {
+    display: block;
+    width: 18px; height: 2px;
+    background: var(--purple-dk);
+    border-radius: 1px;
+    box-shadow: 0 -6px 0 var(--purple-dk), 0 6px 0 var(--purple-dk);
+  }
+
+  /* ── HERO — 2-column flex ───────────────────────────── */
+  .hero {
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px 0;
+    align-items: flex-start;
+  }
+
+  .hero-left {
+    width: 116px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-right {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* ── HEADLINE ───────────────────────────────────────── */
+  .headline {
+    position: relative;
+    top: auto; left: auto; width: auto;
+    font-size: 21px;
+    line-height: 27px;
+    letter-spacing: 1px;
+  }
+
+  /* ── GAME BADGE ─────────────────────────────────────── */
+  .game-badge {
+    position: relative;
+    top: auto; left: auto;
+    width: 88px; height: 51px;
+    margin-top: -2px;
+    transform-origin: left center;
+  }
+  .game-badge-text { font-size: 27px; }
+
+  /* ── GET STARTED ────────────────────────────────────── */
+  .btn-cta {
+    position: relative;
+    top: auto; left: auto;
+    width: 100%; height: 36px;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    gap: 6px;
+    box-shadow: 0 4px 16px rgba(159,119,214,.35);
+  }
+  .btn-cta img { width: 13px; height: 13px; }
+
+  /* ── APPS ───────────────────────────────────────────── */
+  .apps-wrap {
+    position: relative;
+    top: auto; left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .apps-circles {
+    width: 46px; height: 26px;
+    flex-shrink: 0;
+  }
+  .app-circle {
+    width: 26px; height: 26px;
+  }
+  .app-android { left: 18px; top: 0; }
+  .app-apple   { left: 0;   top: 0; }
+  .app-circle img { width: 14px; height: 14px; }
+  .apps-label {
+    margin-top: 0;
+    font-size: 10px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  /* ── SPEECH BUBBLE ──────────────────────────────────── */
+  .speech-bubble {
+    position: relative;
+    top: auto; left: auto;
+    width: 100%; height: 46px;
+    border-radius: 50px;
+    transform-origin: center;
+  }
+  .bubble-avatar {
+    top: 8px; left: 8px;
+    width: 30px; height: 30px;
+  }
+  .bubble-main {
+    top: 9px; left: 44px; right: 6px;
+    font-size: 8.5px;
+    letter-spacing: 0.2px;
+    white-space: normal;
+    line-height: 1.1;
+  }
+  .bubble-sub {
+    top: 28px; left: 44px;
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+
+  /* ── CHARACTER ──────────────────────────────────────── */
+  .character {
+    position: relative;
+    top: auto; left: auto;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: top center;
+  }
+
+  /* ── BOTTOM SECTION ─────────────────────────────────── */
+  .bottom-section {
+    position: relative;
+    top: auto; left: auto;
+    width: calc(100% - 32px);
+    margin: 12px 16px 24px;
+    height: 185px;
+    background: var(--white);
+    border-radius: 20px;
+    flex-shrink: 0;
+    overflow: visible; /* allow character head to peek above */
+  }
+  .bottom-bg { display: none; }
+
+  /* Community character — scaled ~0.5× from desktop */
+  .community-oval-clip {
+    left: 16px; top: 35px;
+    width: 88px; height: 143px;
+    border-radius: 44px;
+  }
+  .community-char--base {
+    width: 88px; height: 143px;
+  }
+  .community-char--ovfl {
+    left: 4px; top: -5px;
+    width: 102px; height: 111px;
+  }
+  .community-char--hand2 {
+    left: 82px; top: 151px;
+    width: 17px; height: 28px;
+  }
+  .community-text {
+    top: 18px; left: 118px;
+    font-size: 15px;
+    line-height: 21px;
+    letter-spacing: 0.4px;
+  }
+  .btn-connect {
+    top: 96px; left: 118px;
+    width: 118px; height: 36px;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+  }
+  .logo-vert { display: none; }
+
 }

@@ -35,51 +35,62 @@ document.querySelector('#app').innerHTML = `
       Login
       <img src="${arrowSvg}" alt="" aria-hidden="true" />
     </a>
+    <button class="btn-hamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+    </button>
   </nav>
 
-  <!-- ── HEADLINE ───────────────────────────────────── -->
-  <div class="headline" aria-label="Choose your awesome game to play.">
-    CHOOSE YOUR<br>AWESOME<br>TO PLAY.
-  </div>
+  <!-- ── HERO (display:contents on desktop → flex-row on mobile) ── -->
+  <div class="hero">
+    <div class="hero-left">
 
-  <!-- ── GAME badge (animated, text selectable) ──────── -->
-  <div class="game-badge">
-    <img class="game-badge-bg" src="${gameBgSvg}" alt="" aria-hidden="true" />
-    <span class="game-badge-text">GAME</span>
-  </div>
-
-  <!-- ── GET STARTED ────────────────────────────────── -->
-  <a class="btn-cta" href="#" role="button">
-    Get Started
-    <img src="${arrowSvg}" alt="" aria-hidden="true" />
-  </a>
-
-  <!-- ── APPS BADGE ─────────────────────────────────── -->
-  <div class="apps-wrap" aria-label="Apps available">
-    <div class="apps-circles">
-      <!-- Android: white bg, purple icon -->
-      <div class="app-circle app-android">
-        <img src="${androidSvg}" alt="Google Play" />
+      <!-- ── HEADLINE ─────────────────────────────── -->
+      <div class="headline" aria-label="Choose your awesome game to play.">
+        CHOOSE YOUR<br>AWESOME<br>TO PLAY.
       </div>
-      <!-- Apple: purple bg, white icon -->
-      <div class="app-circle app-apple">
-        <img src="${appleSvg}" alt="App Store" />
+
+      <!-- ── GAME badge ────────────────────────────── -->
+      <div class="game-badge">
+        <img class="game-badge-bg" src="${gameBgSvg}" alt="" aria-hidden="true" />
+        <span class="game-badge-text">GAME</span>
       </div>
-    </div>
-    <span class="apps-label">Apps available</span>
-  </div>
 
-  <!-- ── MAIN CHARACTER (on top of everything) ──────── -->
-  <img class="character" src="${characterPng}" alt="Boost — Gameland mascot" />
+      <!-- ── GET STARTED ───────────────────────────── -->
+      <a class="btn-cta" href="#" role="button">
+        Get Started
+        <img src="${arrowSvg}" alt="" aria-hidden="true" />
+      </a>
 
-  <!-- ── SPEECH BUBBLE (animates) ───────────────────── -->
-  <div class="speech-bubble" role="region" aria-label="Boost introduction">
-    <div class="bubble-avatar">
-      <img src="${bubblePng}" alt="Boost" />
-    </div>
-    <p class="bubble-main">I am Boost, nice to meet you!</p>
-    <p class="bubble-sub">Created by Daniel Alves</p>
-  </div>
+      <!-- ── APPS BADGE ────────────────────────────── -->
+      <div class="apps-wrap" aria-label="Apps available">
+        <div class="apps-circles">
+          <div class="app-circle app-android">
+            <img src="${androidSvg}" alt="Google Play" />
+          </div>
+          <div class="app-circle app-apple">
+            <img src="${appleSvg}" alt="App Store" />
+          </div>
+        </div>
+        <span class="apps-label">Apps available</span>
+      </div>
+
+      <!-- ── SPEECH BUBBLE ─────────────────────────── -->
+      <div class="speech-bubble" role="region" aria-label="Boost introduction">
+        <div class="bubble-avatar">
+          <img src="${bubblePng}" alt="Boost" />
+        </div>
+        <p class="bubble-main">I am Boost, nice to meet you!</p>
+        <p class="bubble-sub">Created by Daniel Alves</p>
+      </div>
+
+    </div><!-- /.hero-left -->
+    <div class="hero-right">
+
+      <!-- ── MAIN CHARACTER ────────────────────────── -->
+      <img class="character" src="${characterPng}" alt="Boost — Gameland mascot" />
+
+    </div><!-- /.hero-right -->
+  </div><!-- /.hero -->
 
   <!-- ── BOTTOM SECTION ─────────────────────────────── -->
   <div class="bottom-section">
@@ -88,13 +99,10 @@ document.querySelector('#app').innerHTML = `
     <img class="bottom-bg" src="${bottomShapeSvg}" alt="" aria-hidden="true" />
 
     <!-- Community character — layered system -->
-    <!-- Clip container (oval shape + purple bg, overflow:hidden) clips base body -->
     <div class="community-oval-clip">
       <img class="community-char--base" src="${community01Png}" alt="Online gaming community" />
     </div>
-    <!-- Overflow layer: head/arm above oval, NOT clipped -->
     <img class="community-char--ovfl"  src="${community02Png}" alt="" aria-hidden="true" />
-    <!-- Right hand, NOT clipped -->
     <img class="community-char--hand2" src="${community03Png}" alt="" aria-hidden="true" />
 
     <!-- Community info -->
@@ -118,10 +126,17 @@ function scalePage() {
   const page  = document.querySelector('.page');
   if (!stage || !page) return;
 
-  const scale = window.innerWidth / 1440;
-  stage.style.transform       = `scale(${scale})`;
-  stage.style.transformOrigin = 'top left';
-  page.style.height           = `${1193 * scale}px`;
+  if (window.innerWidth <= 767) {
+    /* Mobile — disable fixed-canvas scaling */
+    stage.style.transform = 'none';
+    stage.style.width     = '100%';
+    page.style.height     = 'auto';
+  } else {
+    const scale = window.innerWidth / 1440;
+    stage.style.transform       = `scale(${scale})`;
+    stage.style.transformOrigin = 'top left';
+    page.style.height           = `${1193 * scale}px`;
+  }
 }
 
 scalePage();
