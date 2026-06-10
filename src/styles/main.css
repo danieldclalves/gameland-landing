@@ -26,10 +26,7 @@ html, body {
 #app { width: 100%; }
 
 /* ── PAGE WRAPPER ────────────────────────────────────── */
-.page {
-  width: 100vw;
-  overflow: hidden;
-}
+.page { width: 100vw; overflow: hidden; }
 
 /* ── STAGE — fixed 1440 × 1193 canvas ───────────────── */
 .page-stage {
@@ -39,27 +36,27 @@ html, body {
   background-color: var(--bg);
   background-image: repeating-linear-gradient(
     -45deg,
-    transparent       0px,
-    transparent       40px,
+    transparent           0px,
+    transparent           40px,
     rgba(159,119,214,.08) 40px,
     rgba(159,119,214,.08) 42px
   );
   overflow: hidden;
 }
 
-/* ── HAMBURGER — desktop hidden ──────────────────────── */
+/* ── DESKTOP: hero wrappers are transparent ──────────── */
+.hero, .hero-cols, .hero-left, .hero-right { display: contents; }
+
+/* ── HAMBURGER — hidden on desktop ──────────────────── */
 .btn-hamburger { display: none; }
 
 /* ── DECORATIVE CURVED LINE ──────────────────────────── */
 .deco-line {
   position: absolute;
-  top: 338px;
-  left: 2px;
-  width: 1438px;
-  height: 234px;
+  top: 338px; left: 2px;
+  width: 1438px; height: 234px;
   z-index: 2;
-  pointer-events: none;
-  user-select: none;
+  pointer-events: none; user-select: none;
 }
 
 /* ── NAVBAR ──────────────────────────────────────────── */
@@ -68,13 +65,9 @@ html, body {
   top: 48px; left: 112px;
   width: 1216px; height: 56px;
   z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
 }
-
 .nav-logo img { height: 44px; width: auto; display: block; }
-
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a {
   font-family: 'Inter', sans-serif;
@@ -113,7 +106,6 @@ html, body {
   z-index: 5; width: 380px;
 }
 
-/* "TO PLAY." — third line of the original headline */
 .headline-end {
   position: absolute;
   top: 375px; left: 112px;
@@ -124,7 +116,7 @@ html, body {
   z-index: 5; width: 380px;
 }
 
-/* ── GAME badge (animated, text selectable) ─────────── */
+/* ── GAME badge ──────────────────────────────────────── */
 .game-badge {
   position: absolute;
   top: 281px; left: 392px;
@@ -133,29 +125,22 @@ html, body {
   animation: gamePulse 8s ease-in-out infinite;
   transform-origin: left center;
 }
-
 @keyframes gamePulse {
-  0%,  100% { transform: scale(1); }
-  50%        { transform: scale(1.03) translateY(-3px); }
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.03) translateY(-3px); }
 }
-
 .game-badge-bg {
-  position: absolute;
-  inset: 0; width: 100%; height: 100%;
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
 }
-
 .game-badge-text {
   position: absolute;
   top: 50%; left: 50%;
   font-family: 'Anton', sans-serif;
-  font-size: 64px;
-  line-height: 1;
-  letter-spacing: 2px;
+  font-size: 64px; line-height: 1; letter-spacing: 2px;
   color: var(--login-bg);
-  user-select: text;
-  cursor: text;
-  white-space: nowrap;
+  user-select: text; cursor: text; white-space: nowrap;
   transform: translate(-50%, -50%) rotate(6.5deg);
 }
 
@@ -189,42 +174,32 @@ html, body {
   top: 225px; left: 1199px;
   z-index: 5;
 }
-
-.apps-circles {
-  position: relative;
-  width: 119px; height: 59px;
-}
-
+.apps-circles { position: relative; width: 119px; height: 59px; }
 .app-circle {
   position: absolute;
   width: 59px; height: 59px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
-  transition: transform 160ms var(--ease),
-              box-shadow  160ms var(--ease);
+  transition: transform 160ms var(--ease), box-shadow 160ms var(--ease);
 }
 .app-circle:hover {
   transform: scale(1.10);
   box-shadow: 0 6px 20px rgba(129,83,193,.40);
 }
-
 .app-android {
   left: 45px; top: 0;
   background: var(--white);
   box-shadow: 0 2px 10px rgba(53,27,79,.12);
   z-index: 1;
 }
-
 .app-apple {
   left: 0; top: 0;
   background: var(--purple);
   box-shadow: 0 2px 10px rgba(53,27,79,.20);
   z-index: 2;
 }
-
 .app-circle img { width: 32px; height: 32px; }
-
 .apps-label {
   display: block; margin-top: 18px;
   font-family: 'Inter', sans-serif;
@@ -233,7 +208,7 @@ html, body {
   white-space: nowrap;
 }
 
-/* ── MAIN CHARACTER — above everything ───────────────── */
+/* ── MAIN CHARACTER ──────────────────────────────────── */
 .character {
   position: absolute;
   top: 76px; left: 528px;
@@ -243,7 +218,7 @@ html, body {
   pointer-events: none; user-select: none;
 }
 
-/* ── SPEECH BUBBLE (animated) ────────────────────────── */
+/* ── SPEECH BUBBLE ───────────────────────────────────── */
 .speech-bubble {
   position: absolute;
   top: 549px; left: 1016px;
@@ -256,12 +231,10 @@ html, body {
   animation: bubbleBreath 3.2s ease-in-out infinite;
   transform-origin: left center;
 }
-
 @keyframes bubbleBreath {
-  0%,  100% { transform: scale(1)    translateY(0px); }
-  50%        { transform: scale(1.05) translateY(-5px); }
+  0%,100% { transform: scale(1)    translateY(0px); }
+  50%      { transform: scale(1.05) translateY(-5px); }
 }
-
 .bubble-avatar {
   position: absolute; top: 11px; left: 11px;
   width: 56px; height: 56px;
@@ -271,14 +244,12 @@ html, body {
   width: 100%; height: 100%;
   object-fit: cover; object-position: top center;
 }
-
 .bubble-main {
   position: absolute; top: 19px; left: 78px; right: 12px;
   font-family: 'Anton', sans-serif;
   font-size: 16px; letter-spacing: 0.64px;
   color: var(--text); white-space: nowrap; line-height: 1;
 }
-
 .bubble-sub {
   position: absolute; top: 44px; left: 78px;
   font-family: 'Inter', sans-serif;
@@ -294,12 +265,10 @@ html, body {
   width: 1216px; height: 402px;
   z-index: 4;
 }
-
 .bottom-bg {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  pointer-events: none; user-select: none;
-  z-index: 1;
+  pointer-events: none; user-select: none; z-index: 1;
 }
 
 /* ── COMMUNITY CHARACTER ─────────────────────────────── */
@@ -308,44 +277,33 @@ html, body {
   left: 33px; top: 70px;
   width: 176px; height: 286px;
   border-radius: 88px;
-  overflow: hidden;
-  background: var(--purple);
-  z-index: 3;
+  overflow: hidden; background: var(--purple); z-index: 3;
 }
-
 .community-char--base {
-  position: absolute;
-  left: 0; top: 0;
+  position: absolute; left: 0; top: 0;
   width: 176px; height: 286px;
   pointer-events: none; user-select: none;
 }
-
 .community-char--ovfl {
   position: absolute;
   left: 12px; top: 80px;
   width: 204px; height: 222px;
-  z-index: 6;
-  pointer-events: none; user-select: none;
+  z-index: 6; pointer-events: none; user-select: none;
 }
-
 .community-char--hand2 {
   position: absolute;
   left: 170px; top: 302px;
   width: 33px; height: 55px;
-  z-index: 6;
-  pointer-events: none; user-select: none;
+  z-index: 6; pointer-events: none; user-select: none;
 }
-
 .community-text {
   position: absolute;
   top: 101px; left: 240px;
   font-family: 'Anton', sans-serif;
   font-size: 36.297px; line-height: 49.708px;
   letter-spacing: 1.4519px;
-  color: var(--text); text-transform: uppercase;
-  z-index: 5;
+  color: var(--text); text-transform: uppercase; z-index: 5;
 }
-
 .btn-connect {
   position: absolute;
   top: 263px; left: 240px;
@@ -358,21 +316,15 @@ html, body {
   text-decoration: none; cursor: pointer; z-index: 5;
   transition: background 150ms var(--ease), transform 150ms var(--ease);
 }
-.btn-connect:hover {
-  background: var(--purple-dk);
-  transform: translateY(-2px);
-}
+.btn-connect:hover { background: var(--purple-dk); transform: translateY(-2px); }
 
 /* ── VERTICAL LOGO ───────────────────────────────────── */
 .logo-vert {
   position: absolute;
   left: 1077px; top: 225px;
   width: 191px; height: 45px;
-  transform: rotate(90deg);
-  transform-origin: center center;
-  opacity: 0.55;
-  pointer-events: none; user-select: none;
-  z-index: 5;
+  transform: rotate(90deg); transform-origin: center center;
+  opacity: 0.55; pointer-events: none; user-select: none; z-index: 5;
 }
 
 
@@ -381,9 +333,8 @@ html, body {
    ═══════════════════════════════════════════════════════ */
 @media (max-width: 767px) {
 
-  /* ── PAGE / STAGE ───────────────────────────────────── */
+  /* ── PAGE / STAGE ─────────────────────────────────── */
   .page { overflow: visible; }
-
   .page-stage {
     width: 100% !important;
     height: auto !important;
@@ -392,7 +343,6 @@ html, body {
     display: flex;
     flex-direction: column;
   }
-
   .deco-line { display: none; }
 
   /* ── NAVBAR ─────────────────────────────────────────── */
@@ -405,45 +355,40 @@ html, body {
   }
   .nav-links { display: none; }
   .btn-login  { display: none; }
-
   .btn-hamburger {
-    display: flex;
-    align-items: center; justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     width: 40px; height: 40px;
     background: var(--login-bg);
     border: 1px solid var(--purple);
-    border-radius: 50%;
-    cursor: pointer;
-    flex-shrink: 0;
-    padding: 0;
+    border-radius: 50%; cursor: pointer; flex-shrink: 0; padding: 0;
   }
   .btn-hamburger span {
-    display: block;
-    width: 18px; height: 2px;
-    background: var(--purple-dk);
-    border-radius: 1px;
+    display: block; width: 18px; height: 2px;
+    background: var(--purple-dk); border-radius: 1px;
     box-shadow: 0 -6px 0 var(--purple-dk), 0 6px 0 var(--purple-dk);
   }
 
-  /* ── HERO ───────────────────────────────────────────── */
+  /* ── HERO ────────────────────────────────────────────── */
   .hero {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
     padding: 8px 16px 0;
+    gap: 10px;
+  }
+  .hero-cols {
+    display: flex;
+    gap: 8px;
     align-items: flex-start;
   }
-
   .hero-left {
-    width: 128px;
+    width: 140px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
-
   .hero-right {
-    flex: 1;
-    min-width: 0;
+    flex: 1; min-width: 0;
   }
 
   /* ── HEADLINE ───────────────────────────────────────── */
@@ -451,112 +396,94 @@ html, body {
   .headline-end {
     position: relative;
     top: auto; left: auto; width: auto;
-    font-family: 'Anton', sans-serif;
-    font-size: 26px;
-    line-height: 32px;
-    letter-spacing: 1px;
-    color: var(--text);
-    text-transform: uppercase;
+    font-size: 27px; line-height: 33px; letter-spacing: 1px;
   }
 
   /* ── GAME BADGE ─────────────────────────────────────── */
   .game-badge {
     position: relative;
     top: auto; left: auto;
-    width: 100%; height: 58px;
+    width: 100%; height: 60px;
     margin-top: -4px;
     transform-origin: left center;
   }
-  .game-badge-text { font-size: 30px; }
+  .game-badge-text { font-size: 31px; }
 
   /* ── GET STARTED ────────────────────────────────────── */
   .btn-cta {
     position: relative;
     top: auto; left: auto;
     width: 100%; height: 38px;
-    font-size: 12.5px;
-    letter-spacing: 0.4px;
-    gap: 6px;
+    font-size: 12.5px; letter-spacing: 0.4px; gap: 6px;
     box-shadow: 0 4px 16px rgba(159,119,214,.35);
   }
   .btn-cta img { width: 13px; height: 13px; }
 
-  /* ── APPS — label below circles ─────────────────────── */
+  /* ── APPS — circles + label stacked vertically ───────── */
   .apps-wrap {
     position: relative;
     top: auto; left: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 5px;
   }
-  .apps-circles {
-    width: 48px; height: 28px;
-  }
-  .app-circle {
-    width: 28px; height: 28px;
-  }
-  .app-android { left: 18px; top: 0; }
-  .app-apple   { left: 0;   top: 0; }
-  .app-circle img { width: 14px; height: 14px; }
+  .apps-circles { width: 54px; height: 32px; }
+  .app-circle   { width: 32px; height: 32px; }
+  .app-android  { left: 20px; top: 0; }
+  .app-apple    { left: 0;    top: 0; }
+  .app-circle img { width: 16px; height: 16px; }
   .apps-label {
     margin-top: 0;
-    font-size: 10px;
-    letter-spacing: 0.3px;
-    white-space: nowrap;
-  }
-
-  /* ── SPEECH BUBBLE — auto-height, text inside ───────── */
-  .speech-bubble {
-    position: relative;
-    top: auto; left: auto;
-    width: 100%;
-    height: auto;
-    min-height: 48px;
-    padding: 8px 10px 8px 48px;
-    border-radius: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transform-origin: center;
-  }
-  .bubble-avatar {
-    position: absolute;
-    top: 8px; left: 8px;
-    width: 32px; height: 32px;
-  }
-  .bubble-main {
-    position: static;
-    font-size: 10.5px;
-    letter-spacing: 0.3px;
-    white-space: normal;
-    line-height: 1.3;
-    color: var(--text);
-  }
-  .bubble-sub {
-    position: static;
-    font-size: 9.5px;
-    letter-spacing: 0;
-    margin-top: 2px;
+    font-size: 11px; letter-spacing: 0.3px; white-space: nowrap;
   }
 
   /* ── CHARACTER ──────────────────────────────────────── */
   .character {
     position: relative;
     top: auto; left: auto;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: top center;
+    width: 100%; height: auto;
+    object-fit: contain; object-position: top center;
   }
 
-  /* ── BOTTOM SECTION ─────────────────────────────────── */
+  /* ── SPEECH BUBBLE — full width row below hero-cols ─── */
+  .speech-bubble {
+    position: relative;
+    top: auto; left: auto;
+    width: 100%; height: auto;
+    min-height: 54px;
+    padding: 10px 14px 10px 54px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform-origin: left center;
+  }
+  .bubble-avatar {
+    position: absolute;
+    top: 50%; left: 10px;
+    transform: translateY(-50%);
+    width: 34px; height: 34px;
+  }
+  .bubble-main {
+    position: static;
+    font-size: 13px; letter-spacing: 0.4px;
+    white-space: normal; line-height: 1.25;
+    color: var(--text);
+  }
+  .bubble-sub {
+    position: static;
+    font-size: 11px; letter-spacing: 0;
+    white-space: nowrap; margin-top: 3px;
+  }
+
+  /* ── BOTTOM SECTION — proportional 0.5× from desktop ── */
   .bottom-section {
     position: relative;
     top: auto; left: auto;
     width: calc(100% - 32px);
-    margin: 12px 16px 28px;
-    height: 205px;
+    margin: 4px 16px 28px;
+    height: 200px;
     background: var(--white);
     border-radius: 22px;
     flex-shrink: 0;
@@ -564,34 +491,33 @@ html, body {
   }
   .bottom-bg { display: none; }
 
-  /* Community character — designed for ~100px left column */
+  /* oval-clip: desktop left=33,top=70,w=176,h=286 × 0.5 */
   .community-oval-clip {
-    left: 10px; top: 22px;
-    width: 84px; height: 158px;
-    border-radius: 42px;
+    left: 17px; top: 35px;
+    width: 88px; height: 143px;
+    border-radius: 44px;
   }
-  .community-char--base {
-    width: 84px; height: 158px;
-  }
+  .community-char--base { width: 88px; height: 143px; }
+
+  /* community-02: desktop left=12,top=80,w=204,h=222 × 0.5 */
   .community-char--ovfl {
-    left: 0px; top: -12px;
-    width: 105px; height: 114px;
+    left: 6px; top: 40px;
+    width: 102px; height: 111px;
   }
+  /* community-03: desktop left=170,top=302,w=33,h=55 × 0.5 */
   .community-char--hand2 {
-    left: 78px; top: 160px;
-    width: 18px; height: 30px;
+    left: 85px; top: 151px;
+    width: 17px; height: 28px;
   }
+  /* community-text: increase font for better fill */
   .community-text {
-    top: 22px; left: 110px;
-    font-size: 20px;
-    line-height: 27px;
-    letter-spacing: 0.6px;
+    top: 20px; left: 122px;
+    font-size: 22px; line-height: 30px; letter-spacing: 0.6px;
   }
   .btn-connect {
-    top: 114px; left: 110px;
-    width: 150px; height: 40px;
-    font-size: 13px;
-    letter-spacing: 0.4px;
+    top: 120px; left: 122px;
+    width: 155px; height: 40px;
+    font-size: 13px; letter-spacing: 0.4px;
   }
   .logo-vert { display: none; }
 

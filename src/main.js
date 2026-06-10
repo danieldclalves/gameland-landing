@@ -41,49 +41,54 @@ document.querySelector('#app').innerHTML = `
   </nav>
 
   <!-- ── HERO ───────────────────────────────────────── -->
+  <!--
+    On desktop: hero, hero-cols, hero-left, hero-right all have display:contents
+    On mobile:  hero = flex column; hero-cols = flex row; speech-bubble spans full width
+  -->
   <div class="hero">
-    <div class="hero-left">
+    <div class="hero-cols">
 
-      <!-- Headline split so GAME badge sits between AWESOME and TO PLAY on mobile -->
-      <div class="headline">CHOOSE YOUR<br>AWESOME</div>
-      <div class="game-badge">
-        <img class="game-badge-bg" src="${gameBgSvg}" alt="" aria-hidden="true" />
-        <span class="game-badge-text">GAME</span>
-      </div>
-      <div class="headline-end">TO PLAY.</div>
-
-      <!-- ── GET STARTED ───────────────────────────── -->
-      <a class="btn-cta" href="#" role="button">
-        Get Started
-        <img src="${arrowSvg}" alt="" aria-hidden="true" />
-      </a>
-
-      <!-- ── APPS BADGE ────────────────────────────── -->
-      <div class="apps-wrap" aria-label="Apps available">
-        <div class="apps-circles">
-          <div class="app-circle app-android">
-            <img src="${androidSvg}" alt="Google Play" />
-          </div>
-          <div class="app-circle app-apple">
-            <img src="${appleSvg}" alt="App Store" />
-          </div>
+      <div class="hero-left">
+        <div class="headline">CHOOSE YOUR<br>AWESOME</div>
+        <div class="game-badge">
+          <img class="game-badge-bg" src="${gameBgSvg}" alt="" aria-hidden="true" />
+          <span class="game-badge-text">GAME</span>
         </div>
-        <span class="apps-label">Apps available</span>
-      </div>
+        <div class="headline-end">TO PLAY.</div>
 
-      <!-- ── SPEECH BUBBLE ─────────────────────────── -->
-      <div class="speech-bubble" role="region" aria-label="Boost introduction">
-        <div class="bubble-avatar">
-          <img src="${bubblePng}" alt="Boost" />
+        <a class="btn-cta" href="#" role="button">
+          Get Started
+          <img src="${arrowSvg}" alt="" aria-hidden="true" />
+        </a>
+
+        <div class="apps-wrap" aria-label="Apps available">
+          <div class="apps-circles">
+            <div class="app-circle app-android">
+              <img src="${androidSvg}" alt="Google Play" />
+            </div>
+            <div class="app-circle app-apple">
+              <img src="${appleSvg}" alt="App Store" />
+            </div>
+          </div>
+          <span class="apps-label">Apps available</span>
         </div>
-        <p class="bubble-main">I am Boost, nice to meet you!</p>
-        <p class="bubble-sub">Created by Daniel Alves</p>
-      </div>
+      </div><!-- /.hero-left -->
 
-    </div><!-- /.hero-left -->
-    <div class="hero-right">
-      <img class="character" src="${characterPng}" alt="Boost — Gameland mascot" />
+      <div class="hero-right">
+        <img class="character" src="${characterPng}" alt="Boost — Gameland mascot" />
+      </div><!-- /.hero-right -->
+
+    </div><!-- /.hero-cols -->
+
+    <!-- Speech bubble: absolute on desktop, full-width row on mobile -->
+    <div class="speech-bubble" role="region" aria-label="Boost introduction">
+      <div class="bubble-avatar">
+        <img src="${bubblePng}" alt="Boost" />
+      </div>
+      <p class="bubble-main">I am Boost, nice to meet you!</p>
+      <p class="bubble-sub">Created by Daniel Alves</p>
     </div>
+
   </div><!-- /.hero -->
 
   <!-- ── BOTTOM SECTION ─────────────────────────────── -->
