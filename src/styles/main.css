@@ -117,8 +117,13 @@ html, body {
   top: 281px; left: 392px;
   width: 201px; height: 117px;
   z-index: 6;
-  animation: bubbleBreath 3.2s ease-in-out infinite;
+  animation: gamePulse 8s ease-in-out infinite;
   transform-origin: left center;
+}
+
+@keyframes gamePulse {
+  0%,  100% { transform: scale(1); }
+  50%        { transform: scale(1.03) translateY(-3px); }
 }
 
 .game-badge-bg {
@@ -127,7 +132,7 @@ html, body {
   pointer-events: none;
 }
 
-/* Visible Anton text — selectable & copyable */
+/* Visible Anton text — rotated to match skewed badge polygon (~6.5°) */
 .game-badge-text {
   position: absolute;
   left: 18px; top: 14px;
@@ -139,6 +144,8 @@ html, body {
   user-select: text;
   cursor: text;
   white-space: nowrap;
+  transform: rotate(6.5deg);
+  transform-origin: left top;
 }
 
 /* ── GET STARTED CTA ─────────────────────────────────── */
