@@ -55,12 +55,14 @@ document.querySelector('#app').innerHTML = `
     <div class="hero-cols">
 
       <div class="hero-left">
-        <div class="headline">CHOOSE YOUR<br>AWESOME</div>
-        <div class="game-badge">
-          <img class="game-badge-bg" src="${gameBgSvg}" alt="" aria-hidden="true" />
-          <span class="game-badge-text">GAME</span>
+        <div class="hero-headline-group">
+          <div class="headline">CHOOSE YOUR<br>AWESOME</div>
+          <div class="game-badge">
+            <img class="game-badge-bg" src="${gameBgSvg}" alt="" aria-hidden="true" />
+            <span class="game-badge-text">GAME</span>
+          </div>
+          <div class="headline-end">TO PLAY.</div>
         </div>
-        <div class="headline-end">TO PLAY.</div>
 
         <a class="btn-cta" href="#" role="button">
           Get Started
