@@ -267,7 +267,7 @@ html, body {
   /* ── HERO ────────────────────────────────────────────── */
   .hero {
     display: flex; flex-direction: column;
-    padding: 8px 16px 0;
+    padding: 8px 16px 0 28px;
   }
   .hero-cols {
     display: flex; gap: 8px; align-items: stretch;
@@ -299,7 +299,7 @@ html, body {
   .game-badge {
     position: relative; top: auto; left: auto;
     width: 104px; height: 46px;
-    margin-top: -4px;
+    margin-top: 6px;
     transform-origin: center center;
     align-self: center;
   }
